@@ -1,7 +1,7 @@
 #!/bin/bash
 
 declare BASE; BASE=$(dirname "$(realpath "$0")")
-source "${BASE}/xyank.help";
+source "${BASE}/yx.help";
 
 declare -g OUT
 declare -g "CR"="$(tput sgr0)"
@@ -24,7 +24,7 @@ function print_len {
 	${C3}$(wc -w <<< "$v")${C8}word\
 	${C3}${#v}${C8}char${CR}
 	EOM
-  [ -z "$XYANK_SILENT" ] && printf '%s\n ---\n' "$v"
+  [ -z "$YX_SILENT" ] && printf '%s\n ---\n' "$v"
 }
 
 function set_output {
@@ -47,4 +47,4 @@ case "$MOD" in
   x|X) set_output "$(eval "${IN}")" ;;
   y|Y) set_output "$IN" ;;
   *)   print_synopsis; fail BAD_MOD ;;
-esac
+esac 

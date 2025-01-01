@@ -1,0 +1,46 @@
+#!/bin/bash
+
+function print_synopsis {
+  echo -e "\n\n\n${CX8} SYNOPSIS"
+  echo -e "${C5} [CMD... |] ${CX6}yx ${CX4}X|Y ${C5}[STR...]\n\n"
+}
+
+function print_usage {
+  cat << EOM
+NAME
+	yx - clipboard-centric command executor
+
+
+SYNOPSIS
+	[CMD... |] yx X|Y [STR...]
+
+
+EXAMPLES
+	# yank arguments to clipboard
+	yx Y date foo          # date foo
+
+	# yank stdin to clipboard
+	date | yx y            # Sun Feb 25 00:00:00 AM +00 2024
+
+	# yank stdin + arguments
+	date | yx Y foo bar    # Sun Feb 25 00:00:00 AM +00 2024 foo bar
+
+	# execute argument * yank its stdout to clipboard
+	yx X date              # Sun Feb 25 00:00:00 AM +00 2024
+
+	# execute stdin & yank its stdout to clipboard
+	echo date | yx X       # Sun Feb 25 00:00:00 AM +00 2024
+
+	# execute stdin + arguments & yank its stdout to clipboard
+	echo date | yx X '+%s' # 1708796381
+
+
+SEE ALSO
+	yank(1), xsel(1), xset(1), xclipboard(1)
+
+
+AUTHOR
+	metaory <metaory@gmail.com>, Feb 2024
+EOM
+}
+# vim: ft=bash 
